@@ -260,6 +260,7 @@ const okTopic = new ROSLIB.Topic({
 okTopic.subscribe(function (message) {
 
     const arrow = document.getElementById('arrow');
+    arrow.style.display = 'block';
     const rect = image.getBoundingClientRect();
     arrow.style.left = Math.round( message.x ) + rect.left + 'px';
     arrow.style.top = Math.round( message.y ) + rect.top + 'px';
