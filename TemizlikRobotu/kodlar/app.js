@@ -18,8 +18,8 @@ compressedImageTopic.subscribe(function(message) {
     image.src = imageData;
     image.onload = function() {
         var canvas = document.getElementById("canvas");
-        canvas.width = 630; 
-        canvas.height = 460;  
+        canvas.width = 630;
+        canvas.height = 460;
         if(canvas) {
             var context = canvas.getContext("2d");
             context.drawImage(image, 0, 0);
@@ -38,60 +38,60 @@ var message = new ROSLIB.Message({
 });
 topic.publish(message);
 
-var kontrol=-1;
+var kontrol = -1;
 var manuelSurusButton = document.getElementById("manuelSurusButton");
 manuelSurusButton.addEventListener("click", function() {
 
-    if(kontrol!=-2){
+    if( kontrol != -2 ){
         if (manuelSurusButton.classList.contains("clicked1")) {
             manuelSurusButton.classList.remove("clicked1");
             manuelSurusButton.classList.add("clicked2");
             manuelSurusButton.classList.remove("clicked3");
-        } 
+        }
         else if (manuelSurusButton.classList.contains("clicked2")) {
             manuelSurusButton.classList.remove("clicked1");
             manuelSurusButton.classList.remove("clicked2");
             manuelSurusButton.classList.add("clicked3");
-        } 
+        }
         else if (manuelSurusButton.classList.contains("clicked3")) {
             manuelSurusButton.classList.remove("clicked1");
             manuelSurusButton.classList.remove("clicked2");
             manuelSurusButton.classList.remove("clicked3");
-        } 
+        }
         else {
             manuelSurusButton.classList.add("clicked1");
         }
     }
 
-    if(kontrol==0){
+    if( kontrol == 0 ) {
         var message = new ROSLIB.Message({
             data : '1'
         });
-        topic.publish(message);
-        kontrol=1;
+        topic.publish( message );
+        kontrol = 1;
     }
-    else if(kontrol==1){
+    else if( kontrol == 1 ) {
         var message = new ROSLIB.Message({
             data : '2'
         });
-        topic.publish(message);
-        kontrol=2;
+        topic.publish( message );
+        kontrol = 2;
     }
-    else if(kontrol==2){
+    else if( kontrol == 2 ) {
         var message = new ROSLIB.Message({
             data : '-1'
         });
-        topic.publish(message);
-        kontrol=-1;
+        topic.publish( message );
+        kontrol = -1;
     }
-    else if(kontrol==-1){
+    else if( kontrol == -1 ) {
         var message = new ROSLIB.Message({
             data : '0'
         });
-        topic.publish(message);
-        kontrol=0;
+        topic.publish( message );
+        kontrol = 0;
     }
-    
+
 });
 
 var twistTopic = new ROSLIB.Topic({
@@ -116,6 +116,28 @@ newTwistTopic.subscribe(function(message) {
 
 var acilDurdurma = document.getElementById("acilDurdurma");
 acilDurdurma.addEventListener("click", function() {
+    kontrol = -2;
+    manuelSurusButton.classList.remove("clicked1");
+    manuelSurusButton.classList.remove("clicked2");
+    manuelSurusButton.classList.remove("clicked3");
+    if ( acilDurdurma.classList.contains("clicked") ) {
+        acilDurdurma.classList.remove("clicked");
+        kontrol = -1;
+    }
+    else {
+        acilDurdurma.classList.add("clicked");
+    }
+    if ( kontrol == -1 ){
+        var message = new ROSLIB.Message({
+            data : '-1'
+        });
+    }
+    if ( kontrol == -2 ){
+        var message = new ROSLIB.Message({
+            data : '-2'
+        });
+    }
+    topic.publish( message );
     var twist = new ROSLIB.Message({
         linear : {
             x : 0
@@ -124,29 +146,7 @@ acilDurdurma.addEventListener("click", function() {
             z : 0
         }
     });
-    twistTopic.publish(twist)
-    kontrol=-2;
-    manuelSurusButton.classList.remove("clicked1");
-    manuelSurusButton.classList.remove("clicked2");
-    manuelSurusButton.classList.remove("clicked3");
-    if (acilDurdurma.classList.contains("clicked")) {
-        acilDurdurma.classList.remove("clicked");
-        kontrol=-1;
-    } 
-    else {
-        acilDurdurma.classList.add("clicked");
-    }
-    if (kontrol==-1){
-        var message = new ROSLIB.Message({
-            data : '-1'
-        });
-    }
-    if (kontrol==-2){
-        var message = new ROSLIB.Message({
-            data : '-2'
-        });
-    }
-    topic.publish(message);
+    twistTopic.publish( twist )
 });
 
 var ileriButton = document.getElementById("ileriButton");
@@ -156,8 +156,8 @@ var geriButton = document.getElementById("geriButton");
 var durButton = document.getElementById("durButton");
 
 ileriButton.addEventListener("click", function() {
-    if(kontrol==1){
-        val_linear_x +=0.02
+    if( kontrol == 1 ){
+        val_linear_x += 0.02
         var twist = new ROSLIB.Message({
             linear : {
                 x : val_linear_x
@@ -166,13 +166,13 @@ ileriButton.addEventListener("click", function() {
                 z : val_angular_z
             }
         });
-        twistTopic.publish(twist)
+        twistTopic.publish( twist )
     }
 });
 
 sagButton.addEventListener("click", function() {
-    if(kontrol==1){
-        val_angular_z -=0.02
+    if( kontrol == 1 ){
+        val_angular_z -= 0.02
         var twist = new ROSLIB.Message({
             linear : {
                 x : val_linear_x
@@ -181,12 +181,12 @@ sagButton.addEventListener("click", function() {
                 z : val_angular_z
             }
         });
-        twistTopic.publish(twist)
+        twistTopic.publish( twist )
     }
 });
 
 solButton.addEventListener("click", function() {
-    if(kontrol==1){
+    if( kontrol == 1 ){
         val_angular_z +=0.02
         var twist = new ROSLIB.Message({
             linear : {
@@ -196,12 +196,12 @@ solButton.addEventListener("click", function() {
                 z : val_angular_z
             }
         });
-        twistTopic.publish(twist)
+        twistTopic.publish( twist )
     }
 });
 
 geriButton.addEventListener("click", function() {
-    if(kontrol==1){
+    if( kontrol == 1 ){
         val_linear_x -= 0.02
         var twist = new ROSLIB.Message({
             linear : {
@@ -211,12 +211,12 @@ geriButton.addEventListener("click", function() {
                 z : val_angular_z
             }
         });
-        twistTopic.publish(twist)
+        twistTopic.publish( twist )
     }
 });
 
 durButton.addEventListener("click", function() {
-    if(kontrol==1){
+    if( kontrol == 1 ){
         var twist = new ROSLIB.Message({
             linear : {
                 x : 0
@@ -225,7 +225,7 @@ durButton.addEventListener("click", function() {
                 z : 0
             }
         });
-        twistTopic.publish(twist)
+        twistTopic.publish( twist )
    }
 });
 
@@ -239,7 +239,7 @@ var noktaTopic = new ROSLIB.Topic({
 const image = document.getElementById('image');
 const canvas2 = document.getElementById('canvas2')
 
-image.addEventListener('click', function(event) {
+image.addEventListener('click', function( event ) {
     const rect = image.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
@@ -248,17 +248,16 @@ image.addEventListener('click', function(event) {
         y: y,
         z: 0
     });
-    noktaTopic.publish(point);
+    noktaTopic.publish( point );
 });
 
 const okTopic = new ROSLIB.Topic({
     ros: ros,
-    name: '/ok', 
-    messageType: 'geometry_msgs/Point' 
+    name: '/ok',
+    messageType: 'geometry_msgs/Point'
 });
-  
-okTopic.subscribe(function (message) {
 
+okTopic.subscribe( function ( message ) {
     const arrow = document.getElementById('arrow');
     arrow.style.display = 'block';
     const rect = image.getBoundingClientRect();
@@ -269,14 +268,13 @@ okTopic.subscribe(function (message) {
     canvas2.width = image.width;
     canvas2.height = image.height;
     var ctx = canvas2.getContext('2d');
-    ctx.drawImage(image, 0, 0);
-    const imageData = ctx.getImageData(0, 0, canvas2.width, canvas2.height);
+    ctx.drawImage( image, 0, 0 );
+    const imageData = ctx.getImageData( 0, 0, canvas2.width, canvas2.height );
     const pixelData = imageData.data;
     const pixelIndex = ( ( Math.round( message.y ) * canvas2.width ) + Math.round( message.x ) ) * 4;
     pixelData[pixelIndex] = 255; // Kirmizi
     pixelData[pixelIndex + 1] = 0; // Yesil
     pixelData[pixelIndex + 2] = 0; // Mavi
-    ctx.putImageData(imageData, 0, 0);
+    ctx.putImageData( imageData, 0, 0 );
     image.src = canvas2.toDataURL();
-
 });
