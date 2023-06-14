@@ -64,7 +64,7 @@ manuelSurusButton.addEventListener("click", function() {
         }
     }
 
-    if( kontrol == 0 ) { //classList'i değiştiğikten sonra da modu tutan topic ve değişken değiştiriliyor.
+    if( kontrol == 0 ) { //classList'i değiştikten sonra da modu tutan topic ve değişken değiştiriliyor.
         var message = new ROSLIB.Message({
             data : '1'
         });
