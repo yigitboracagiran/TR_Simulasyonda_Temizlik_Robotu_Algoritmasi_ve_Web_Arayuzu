@@ -22,24 +22,32 @@ Bu proje, ROS tabanlı bir temizlik robotu simülasyonu için hazırlanmış kon
 
 ## İçindekiler
 
-- [1. Program Hakkında](#1-program-hakkında)
-- [2. Proje Yapısı](#2-proje-yapısı)
-- [3. Kullanılan Dosyalar](#3-kullanılan-dosyalar)
-- [4. Gereksinimler](#4-gereksinimler)
-- [5. Kurulum](#5-kurulum)
-- [6. ROS ve rosbridge Hazırlığı](#6-ros-ve-rosbridge-hazırlığı)
-- [7. Web Arayüzünü Çalıştırma](#7-web-arayüzünü-çalıştırma)
-- [8. Python Kontrol Kodunu Çalıştırma](#8-python-kontrol-kodunu-çalıştırma)
-- [9. Kullanım Modları](#9-kullanım-modları)
-- [10. Web Arayüzü Kontrolleri](#10-web-arayüzü-kontrolleri)
-- [11. Otonom Temizlik Algoritması](#11-otonom-temizlik-algoritması)
-- [12. ROS Topic Yapısı](#12-ros-topic-yapısı)
-- [13. Olası Sorunlar](#13-olası-sorunlar)
-- [14. Final Kontrol Listesi](#14-final-kontrol-listesi)
-- [15. Tanıtım Videosu](#15-tanitim-videosu)
+- [1. Tanıtım Videosu](#1-tanitim-videosu)
+- [2. Program Hakkında](#2-program-hakkında)
+- [3. Proje Yapısı](#3-proje-yapısı)
+- [4. Kullanılan Dosyalar](#4-kullanılan-dosyalar)
+- [5. Gereksinimler](#5-gereksinimler)
+- [6. Kurulum](#6-kurulum)
+- [7. ROS ve rosbridge Hazırlığı](#7-ros-ve-rosbridge-hazırlığı)
+- [8. Web Arayüzünü Çalıştırma](#8-web-arayüzünü-çalıştırma)
+- [9. Python Kontrol Kodunu Çalıştırma](#9-python-kontrol-kodunu-çalıştırma)
+- [10. Kullanım Modları](#10-kullanım-modları)
+- [11. Web Arayüzü Kontrolleri](#11-web-arayüzü-kontrolleri)
+- [12. Otonom Temizlik Algoritması](#12-otonom-temizlik-algoritması)
+- [13. ROS Topic Yapısı](#13-ros-topic-yapısı)
+- [14. Olası Sorunlar](#14-olası-sorunlar)
+- [15. Final Kontrol Listesi](#15-final-kontrol-listesi)
 ---
 
-## 1. Program Hakkında
+<a id="1-tanitim-videosu"></a>
+
+## 1. Tanıtım Videosu
+
+https://github.com/yigitboracagiran/TR_Simulasyonda_Temizlik_Robotu_Algoritmasi_ve_Web_Arayuzu/assets/111417887/bf8bb40a-8892-492e-8b2d-298c19551939
+
+---
+
+## 2. Program Hakkında
 
 Bu proje, simülasyon ortamında çalışan bir temizlik robotunun farklı kontrol modlarıyla yönetilmesini amaçlar.
 
@@ -64,7 +72,7 @@ Program temel olarak üç bölümden oluşur:
 
 ---
 
-## 2. Proje Yapısı
+## 3. Proje Yapısı
 
 Örnek repo yapısı aşağıdaki gibidir:
 
@@ -87,7 +95,7 @@ TR_Simulasyonda_Temizlik_Robotu_Algoritmasi_ve_Web_Arayuzu/
 
 ---
 
-## 3. Kullanılan Dosyalar
+## 4. Kullanılan Dosyalar
 
 | Dosya / Klasör | Açıklama |
 |---|---|
@@ -100,7 +108,7 @@ TR_Simulasyonda_Temizlik_Robotu_Algoritmasi_ve_Web_Arayuzu/
 
 ---
 
-## 4. Gereksinimler
+## 5. Gereksinimler
 
 Bu projenin çalışması için ROS 1 tabanlı bir sistem önerilir.
 
@@ -139,7 +147,7 @@ source ~/.bashrc
 
 ---
 
-## 5. Kurulum
+## 6. Kurulum
 
 Repoyu bilgisayarınıza klonlayın:
 
@@ -157,7 +165,7 @@ chmod +x kodlar/joy.py
 
 ---
 
-## 6. ROS ve rosbridge Hazırlığı
+## 7. ROS ve rosbridge Hazırlığı
 
 Web arayüzü, ROS ile `ws://localhost:9090` adresi üzerinden haberleşir. Bunun için `rosbridge_websocket` çalışmalıdır.
 
@@ -185,7 +193,7 @@ roslaunch rosbridge_server rosbridge_websocket.launch
 
 ---
 
-## 7. Web Arayüzünü Çalıştırma
+## 8. Web Arayüzünü Çalıştırma
 
 Repo ana dizinindeyken basit bir HTTP sunucusu başlatabilirsiniz:
 
@@ -210,7 +218,7 @@ Web arayüzünde aşağıdaki alanlar bulunur:
 
 ---
 
-## 8. Python Kontrol Kodunu Çalıştırma
+## 9. Python Kontrol Kodunu Çalıştırma
 
 `joy.py` dosyasında joystick launch dosyası göreceli yol ile çağrıldığı için Python kodunu `kodlar/` klasörünün içinden çalıştırmak daha uygundur.
 
@@ -225,7 +233,7 @@ python3 joy.py
 
 ---
 
-## 9. Kullanım Modları
+## 10. Kullanım Modları
 
 Sistemde mod bilgisi `/modKontrolu` topic'i üzerinden `std_msgs/String` olarak yayınlanır.
 
@@ -241,7 +249,7 @@ Mod değiştirme işlemi web arayüzündeki `Joystick Arayuz Otonom` butonu üze
 
 ---
 
-## 10. Web Arayüzü Kontrolleri
+## 11. Web Arayüzü Kontrolleri
 
 Web arayüzündeki yön butonları yalnızca arayüz modu aktifken çalışır.
 
@@ -265,7 +273,7 @@ Web arayüzü şu işlemleri yapar:
 
 ---
 
-## 11. Otonom Temizlik Algoritması
+## 12. Otonom Temizlik Algoritması
 
 Otonom modda robot, oda içinde sütun sütun ilerleyen yılan tipi bir temizlik mantığıyla hareket eder.
 
@@ -284,7 +292,7 @@ Algoritmanın genel akışı:
 
 ---
 
-## 12. ROS Topic Yapısı
+## 13. ROS Topic Yapısı
 
 Projede kullanılan başlıca topic'ler aşağıdaki gibidir:
 
@@ -301,7 +309,7 @@ Projede kullanılan başlıca topic'ler aşağıdaki gibidir:
 
 ---
 
-## 13. Olası Sorunlar
+## 14. Olası Sorunlar
 
 ### Web arayüzü ROS'a bağlanmıyor
 
@@ -397,7 +405,7 @@ OdaSutunSolPiksel
 
 ---
 
-## 14. Final Kontrol Listesi
+## 15. Final Kontrol Listesi
 
 Programı çalıştırmadan önce aşağıdakileri kontrol edin:
 
@@ -414,11 +422,3 @@ Programı çalıştırmadan önce aşağıdakileri kontrol edin:
 - [ ] Web arayüzündeki mod butonu doğru çalışıyor.
 - [ ] Acil durdurma butonu test edildi.
 - [ ] Harita koordinatları kullanılan simülasyona göre ayarlandı.
-
----
-
-<a id="15-tanitim-videosu"></a>
-
-## 15. Tanıtım Videosu
-
-https://github.com/yigitboracagiran/TR_Simulasyonda_Temizlik_Robotu_Algoritmasi_ve_Web_Arayuzu/assets/111417887/bf8bb40a-8892-492e-8b2d-298c19551939
