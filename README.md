@@ -421,4 +421,4 @@ Programı çalıştırmadan önce aşağıdakileri kontrol edin:
 
 ## 15. Tanıtım Videosu
 
-Tanıtım videosunu direkt açmak için: https://github.com/yigitboracagiran/TR_Simulasyonda_Temizlik_Robotu_Algoritmasi_ve_Web_Arayuzu/assets/111417887/bf8bb40a-8892-492e-8b2d-298c19551939
+https://github.com/yigitboracagiran/TR_Simulasyonda_Temizlik_Robotu_Algoritmasi_ve_Web_Arayuzu/assets/111417887/bf8bb40a-8892-492e-8b2d-298c19551939
