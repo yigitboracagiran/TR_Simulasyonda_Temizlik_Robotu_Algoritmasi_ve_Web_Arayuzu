@@ -91,7 +91,24 @@ TR_Simulasyonda_Temizlik_Robotu_Algoritmasi_ve_Web_Arayuzu/
 ```
 
 > [!IMPORTANT]
-> `index.html` dosyası bazı JavaScript kütüphanelerini `kutuphaneler/` klasöründen çağırır. Bu klasör sisteminizde yoksa ilgili dosyaları eklemeniz veya `index.html` içindeki kaynak yollarını güncellemeniz gerekir.
+> `index.html` dosyası aşağıdaki JavaScript kütüphanelerini `kutuphaneler/` klasöründen çağırmaktadır:
+>
+> ```text
+> kutuphaneler/
+> ├── eventemitter2.min.js
+> ├── mjpegcanvas.min.js
+> └── roslib.min.js
+> ```
+>
+> Bu kütüphaneler projeye dahil değilse aşağıdaki resmi depolardan temin edilebilir:
+>
+> - **EventEmitter2:** https://github.com/EventEmitter2/EventEmitter2
+> - **Robot Web Tools - roslibjs:** https://github.com/RobotWebTools/roslibjs
+> - **Robot Web Tools - mjpegcanvasjs:** https://github.com/RobotWebTools/mjpegcanvasjs
+>
+> Alternatif olarak, `index.html` dosyasındaki `<script>` etiketleri CDN adresleri kullanılacak şekilde güncellenebilir.
+>
+> **Not:** `index.html` dosyasında hem `roslib.min.js` hem de `roslib.js` çağrısı bulunmaktadır. Bu iki dosya aynı kütüphanenin farklı sürümleridir ve yalnızca biri kullanılmalıdır. Varsayılan olarak `roslib.min.js` kullanılması önerilir.
 
 ---
 
